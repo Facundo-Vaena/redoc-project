@@ -51,7 +51,7 @@ En el archivo de creación del server, usualmente llamado app.ts:
 ```
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("../swagger_output.json
-
+...
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 ```
