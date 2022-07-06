@@ -43,10 +43,13 @@
           },
           {
             "name": "id",
-            "in": "params",
+            "in": "body",
             "required": true,
-            "type": "string",
-            "description": "id of todo"
+            "description": "id of todo",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
           },
           {
             "name": "name",
@@ -84,9 +87,12 @@
           },
           {
             "name": "id",
-            "in": "params",
+            "in": "body",
             "description": "ID of user",
-            "type": "string"
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
           }
         ],
         "responses": {
