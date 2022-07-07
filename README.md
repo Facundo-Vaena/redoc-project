@@ -23,6 +23,7 @@
 - [Swagger](#swagger)
 - [Redoc Template](#redoc-template)
 - [Especificaciones por ruta](#especificaciones-por-ruta)
+- [Exposición de la documentación](#exposición-de-la-documentación)
 - [Último paso](#último-paso)
 
 ## Instalación
@@ -150,6 +151,22 @@ router.get("/:user", ({ params }: Request, res: Response) => {
   const fetchedTodos = findTodosFromUser(userId);
   res.json(fetchedTodos);
 });
+```
+
+# Exposición de la documentación
+Para que nuestro servicio pueda enviar exponer la documentación creada, es necesario crear 2 rutas:
+1. Ruta para enviar el archivo de salida de Swagger. Esta debe ser llamada de la misma forma que el json donde se genero el codigo OpenApi (incluyendo su extensión .json):
+```
+const swagger_output = require("../../swagger_output.json");
+
+router.get("/swagger_output.json", (req: Request, res: Response) => res.json(swagger_output));
+```
+2. Ruta para exponer el HTML con el template de Redoc:
+```
+router.get("/docs", (req: Request, res: Response) => {
+    const editedDirname = __dirname.slice(0, -10) + "index.html"; --> se editó el __dirname para acceder a la ubicación del html
+    res.sendFile(editedDirname);
+})
 ```
 # Último paso
 Para terminar, es necesario agregar el siguiente script en el archivo package.json, el cual ejecutará el archivo de configuración de Swagger (swagger.js):
