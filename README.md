@@ -154,7 +154,7 @@ router.get("/:user", ({ params }: Request, res: Response) => {
 ```
 
 # Exposición de la documentación
-Para que nuestro servicio pueda enviar exponer la documentación creada, es necesario crear 2 rutas:
+Para que nuestro servicio pueda exponer la documentación creada, es necesario crear 2 rutas:
 1. Ruta para enviar el archivo de salida de Swagger. Esta debe ser llamada de la misma forma que el json donde se genero el codigo OpenApi (incluyendo su extensión .json):
 ```
 const swagger_output = require("../../swagger_output.json");
